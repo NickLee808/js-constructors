@@ -14,9 +14,9 @@
  */
 
 function Spell (name, cost, description){
-   this.name = name;
-   this.cost = cost;
-   this.description = description;
+  this.name = name;
+  this.cost = cost;
+  this.description = description;
 
   /**
    * Returns a string of all of the spell's details.
@@ -26,9 +26,9 @@ function Spell (name, cost, description){
    * @return {string} details containing all of the spells information.
    */
 
-   this.getDetails = function (){
-      return 'Name: ' + name + 'Cost: ' + cost + 'Description: ' + description;
-   };
+  this.getDetails = function (){
+    return 'Name: ' + name + 'Cost: ' + cost + 'Description: ' + description;
+  };
 }
 
 /**
@@ -57,8 +57,8 @@ function Spell (name, cost, description){
  */
 
 function DamageSpell (name, cost, damage, description){
-   Spell.call(this, name, cost, description);
-   this.damage = damage;
+  Spell.call(this, name, cost, description);
+  this.damage = damage;
 }
 
 DamageSpell.prototype = Object.create(Spell.prototype);
@@ -81,10 +81,10 @@ DamageSpell.prototype = Object.create(Spell.prototype);
  */
 
 function Spellcaster (name, health, mana){
-   this.name = name;
-   this.health = health;
-   this.mana = mana;
-   this.isAlive = true;
+  this.name = name;
+  this.health = health;
+  this.mana = mana;
+  this.isAlive = true;
 }
 
   /**
@@ -99,15 +99,15 @@ function Spellcaster (name, health, mana){
    */
 
 Spellcaster.prototype.inflictDamage = function(damage){
-   if (damage > this.health){
-      this.health = 0;
-   }   
-   if (this.health - damage >= 0){
-      this.health -= damage;
-   }
-   if (this.health <= 0){
-      this.isAlive = false;
-   }
+  if (damage > this.health){
+    this.health = 0;
+  }   
+  if (this.health - damage >= 0){
+    this.health -= damage;
+  }
+  if (this.health <= 0){
+    this.isAlive = false;
+  }
 };
 
   /**
@@ -121,11 +121,11 @@ Spellcaster.prototype.inflictDamage = function(damage){
    */
 
 Spellcaster.prototype.spendMana = function(number){
-   if (this.mana >= number){
-      this.mana -= number;
-      return true;
-   }
-   return false;
+  if (this.mana >= number){
+    this.mana -= number;
+    return true;
+  }
+  return false;
 };
 
   /**
@@ -166,7 +166,7 @@ Spellcaster.prototype.invoke = function(spell, target) {
       return true;
     }else if(spell instanceof Spell){
       if(spell instanceof DamageSpell){
-         return false;
+        return false;
       }
       if(this.mana >= spell.cost){
         this.spendMana(spell.cost);
