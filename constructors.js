@@ -99,13 +99,15 @@ function Spellcaster (name, health, mana){
    */
 
 Spellcaster.prototype.inflictDamage = function(damage){
-   this.health -= damage;
-   if (this.health <= 0){
-      isAlive = false;
+   if (damage > this.health){
+      this.health = 0;
+   }   
+   if (this.health - damage >= 0){
+      this.health -= damage;
    }
-   this.damage = damage;
-   this.isAlive = false;
-   this.health = 0;
+   if (this.health <= 0){
+      this.isAlive = false;
+   }
 };
 
   /**
@@ -153,6 +155,121 @@ Spellcaster.prototype.spendMana = function(number){
    * @return {boolean}                    Whether the spell was successfully cast.
    */
 
-Spellcaster.prototype.invoke = function (Spell){
-
+Spellcaster.prototype.invoke = function(spell, target) {
+    if(spell instanceof DamageSpell && target instanceof Spellcaster){
+      if(this.mana >= spell.cost){
+        this.spendMana(spell.cost);
+        target.inflictDamage(spell.damage);
+      }else{
+        return false;
+      }
+      return true;
+    }else if(spell instanceof Spell){
+      if(spell instanceof DamageSpell){
+         return false;
+      }
+      if(this.mana >= spell.cost){
+        this.spendMana(spell.cost);
+      }else{
+        return false;
+      }
+      return true;
+    }else{
+      return false;
+    }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+      */
