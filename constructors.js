@@ -118,6 +118,14 @@ Spellcaster.prototype.inflictDamage = function(damage){
    * @return {boolean} success  Whether mana was successfully spent.
    */
 
+Spellcaster.prototype.spendMana = function(number){
+   if (this.mana >= number){
+      this.mana -= number;
+      return true;
+   }
+   return false;
+};
+
   /**
    * @method invoke
    *
@@ -144,3 +152,7 @@ Spellcaster.prototype.inflictDamage = function(damage){
    * @param  {Spellcaster} target         The spell target to be inflicted.
    * @return {boolean}                    Whether the spell was successfully cast.
    */
+
+Spellcaster.prototype.invoke = function (Spell){
+
+};
