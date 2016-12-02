@@ -56,7 +56,12 @@ function Spell (name, cost, description){
  * @property {string} description
  */
 
+function DamageSpell (name, cost, damage, description){
+   Spell.call(this, name, cost, description);
+   this.damage = damage;
+}
 
+DamageSpell.prototype = Object.create(Spell.prototype);
 
 /**
  * Now that you've created some spells, let's create
@@ -74,6 +79,10 @@ function Spell (name, cost, description){
  * @method  spendMana
  * @method  invoke
  */
+
+function Spellcaster (name, health, mana){
+
+}
 
   /**
    * @method inflictDamage
