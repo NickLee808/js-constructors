@@ -26,8 +26,6 @@ function Spell (name, cost, description){
    * @return {string} details containing all of the spells information.
    */
 
-//Defining a property within the class with a value that is a function is correct, it is not good practice for es5. Build them on its respective prototype instead
-
 Spell.prototype.getDetails = function(){
   return 'Name: ' + this.name + 'Cost: ' + this.cost + 'Description: ' + this.description;
 };
