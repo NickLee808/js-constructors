@@ -17,7 +17,7 @@ function Spell (name, cost, description){
   this.name = name;
   this.cost = cost;
   this.description = description;
-
+}
   /**
    * Returns a string of all of the spell's details.
    * The format doesn't matter, as long as it contains the spell name, cost, and description.
@@ -26,10 +26,11 @@ function Spell (name, cost, description){
    * @return {string} details containing all of the spells information.
    */
 
-  this.getDetails = function (){
-    return 'Name: ' + name + 'Cost: ' + cost + 'Description: ' + description;
-  };
-}
+//Defining a property within the class with a value that is a function is correct, it is not good practice for es5. Build them on its respective prototype instead
+
+Spell.prototype.getDetails = function(){
+  return 'Name: ' + this.name + 'Cost: ' + this.cost + 'Description: ' + this.description;
+};
 
 /**
  * A spell that deals damage.
